@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 07 nov. 2025 à 18:21
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 02-12-2025 a las 21:47:33
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `vlog_videojueos_los_frikis`
+-- Base de datos: `vlog_videojueos_los_frikis`
 --
 CREATE DATABASE IF NOT EXISTS `vlog_videojueos_los_frikis` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `vlog_videojueos_los_frikis`;
@@ -26,7 +26,7 @@ USE `vlog_videojueos_los_frikis`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categorias`
+-- Estructura de tabla para la tabla `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -35,7 +35,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `categorias`
+-- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`id`, `nombre`) VALUES
@@ -46,7 +46,51 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `videojuegos`
+-- Estructura de tabla para la tabla `developers`
+--
+
+CREATE TABLE `developers` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `img1` varchar(50) NOT NULL,
+  `email` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `developers`
+--
+
+INSERT INTO `developers` (`id`, `nombre`, `img1`, `email`) VALUES
+(1, 'Odila', 'odila.png', 'odilabalbi1992@gmail.com'),
+(2, 'Gonzalo', 'gonzalo.png', 'gmguerrerocv@gmail.com'),
+(3, 'Diego ', 'diego.png', 'diego.sebasmassaro@gmail.com'),
+(4, 'Ruan', 'erwan.png', 'ruan.dlv.46@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `nombre_completo` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `nombre_usuario`, `nombre_completo`, `password`) VALUES
+(1, 'tumama@gmail.com', 'Gonzalo', 'Gonzalo Guerrero', '$2y$10$DerWoQLy8msGfvNrE2MxU.NOh4emX23mihJVaSjbVblBQB8ae5.a2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `videojuegos`
 --
 
 CREATE TABLE `videojuegos` (
@@ -63,7 +107,7 @@ CREATE TABLE `videojuegos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `videojuegos`
+-- Volcado de datos para la tabla `videojuegos`
 --
 
 INSERT INTO `videojuegos` (`id`, `nombre`, `id_categoria`, `compania`, `lanzamiento`, `plataforma`, `bajada`, `img1`, `link`, `tiene`) VALUES
@@ -85,44 +129,68 @@ INSERT INTO `videojuegos` (`id`, `nombre`, `id_categoria`, `compania`, `lanzamie
 (16, 'Golden Axe,', 3, '', '1989', 'Sega', 'El videojuego se ambienta en una Edad Media fantástica en la que un villano llamado Death Adder aterroriza a los lugareños del reino de Yuria y ha raptado a la princesa y al rey.,', 'goldenaxe.jpg', 'https://www.minijuegos.com/juego/golden-axe-online', 'Jugar');
 
 --
--- Index pour les tables déchargées
+-- Índices para tablas volcadas
 --
 
 --
--- Index pour la table `categorias`
+-- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `videojuegos`
+-- Indices de la tabla `developers`
+--
+ALTER TABLE `developers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `videojuegos`
 --
 ALTER TABLE `videojuegos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT pour la table `categorias`
+-- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `videojuegos`
+-- AUTO_INCREMENT de la tabla `developers`
+--
+ALTER TABLE `developers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `videojuegos`
 --
 ALTER TABLE `videojuegos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Contraintes pour les tables déchargées
+-- Restricciones para tablas volcadas
 --
 
 --
--- Contraintes pour la table `videojuegos`
+-- Filtros para la tabla `videojuegos`
 --
 ALTER TABLE `videojuegos`
   ADD CONSTRAINT `videojuegos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`);
